@@ -2,7 +2,7 @@
 ### Hi, I’m Mohit Saxena (@mohitsaxena1409) 👋
 
 - 👀 I’m interested in Java and full-stack development  
-- 🌱 I’m currently learning full-stack development  
+- 🌱 I’m currently learning full-stack development 
 - 💞️ I’m looking to collaborate on web development and open-source projects  
 - 📫 How to reach me: mohitsaxena6528@gmail.com]  
 - 😄 Pronouns: He/Him  
