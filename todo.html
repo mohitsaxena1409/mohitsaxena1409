@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohit Saxena</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ccccd2, #ffffff);
+            color: white;
+        }
+        .main-con {
+            width: 50%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background-color: #4e8dd1;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 15px;
+        }
+        #task-input {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        #task-name {
+            padding: 10px;
+            font-size: 16px;
+            width: 70%;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+        }
+        #add-btn {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #ff0055;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #add-btn:hover {
+            background-color: #d40045;
+        }
+        .task-con {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+        .task-item p {
+            flex: 1;
+            color: white;
+            text-align: left;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-con">
+        <h1>Task List</h1>
+        <div id="task-input">
+            <input type="text" id="task-name" placeholder="Enter your Name">
+            <button id="add-btn">Add</button>
+        </div>
+        <div class="task-con" id="task-container"></div>
+    </div>
+    <script>
+        document.getElementById('add-btn').addEventListener('click', function() {
+            var taskName = document.getElementById('task-name').value.trim();
+            if (taskName === '') return;
+            
+            var taskContainer = document.getElementById('task-container');
+            var taskItem = document.createElement('div');
+            taskItem.classList.add('task-item');
+            taskItem.innerHTML = `<p>${taskName}</p><button class="delete-btn">Delete</button>`;
+            
+            taskContainer.appendChild(taskItem);
+            document.getElementById('task-name').value = '';
+            
+            taskItem.querySelector('.delete-btn').addEventListener('click', function() {
+                taskItem.remove();
+            });
+        });
+    </script>
+</body>
+</html>
