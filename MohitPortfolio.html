@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohit Saxena | Java Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root{
+      --blue:#0A4D8C; /* Primary blue */
+      --dark:#0c0f14; /* Deep blackish */
+      --muted:#6b7280; /* Gray text */
+      --card:#10161f; /* Card background */
+      --light:#f8fafc; /* Off-white */
+      --accent:#1f8fff; /* Lighter accent */
+      --ring: rgba(31,143,255,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:#e5e7eb; background: radial-gradient(1200px 600px at 80% -10%, rgba(10,77,140,.25), transparent 60%),
+      linear-gradient(180deg, #0b0e13 0%, #0a0f18 100%);
+    }
+    /* Layout */
+    .container{width:min(1120px,92%); margin-inline:auto}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px);
+      background:linear-gradient(180deg, rgba(10,13,18,.85), rgba(10,13,18,.65));
+      border-bottom:1px solid rgba(255,255,255,.06)
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px}
+    .brand .logo{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--blue), #082c52);
+      display:grid; place-items:center; color:white; box-shadow:0 8px 24px rgba(10,77,140,.35)}
+    .brand span{font-size:1.05rem}
+    .nav a{color:#c9d1d9; text-decoration:none; font-weight:600; margin-left:18px; font-size:.95rem}
+    .nav a:hover{color:white}
+    .btn{display:inline-flex; align-items:center; gap:10px; background:var(--blue); color:white; border:none;
+      padding:10px 14px; border-radius:12px; text-decoration:none; font-weight:700; box-shadow:0 10px 24px var(--ring)}
+    .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,.14); color:#e5e7eb}
+    .btn.ghost:hover{border-color:#fff}
+
+    /* Hero */
+    .hero{padding:84px 0 48px}
+    .split{display:grid; grid-template-columns:1.2fr .8fr; gap:36px}
+    @media (max-width: 900px){.split{grid-template-columns:1fr}}
+    .title{font-size:clamp(1.8rem, 3.8vw, 3rem); line-height:1.15; font-weight:900; color:white; margin:0 0 12px}
+    .subtitle{color:#b7c3d1; font-size:1.05rem; margin:0 0 22px}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 26px}
+    .chip{border:1px solid rgba(255,255,255,.14); padding:8px 12px; border-radius:999px; color:#dce6f4; font-weight:600; font-size:.9rem}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.08);
+      border-radius:16px; padding:18px; box-shadow:0 16px 40px rgba(0,0,0,.25)}
+    .avatar{aspect-ratio:1/1; width:210px; border-radius:16px; background:linear-gradient(135deg, #0A4D8C, #143d66);
+      display:grid; place-items:center; font-size:64px; margin:auto; color:white; box-shadow:0 18px 40px var(--ring)}
+
+    section{padding:28px 0}
+    .section-title{font-size:1.15rem; color:#dbeafe; letter-spacing:.5px; font-weight:800; margin:0 0 10px}
+    .section-sub{color:#93a3b8; margin:0 0 16px}
+
+    /* Grid cards */
+    .grid{display:grid; gap:16px}
+    .grid-3{grid-template-columns:repeat(3, 1fr)}
+    .grid-2{grid-template-columns:repeat(2, 1fr)}
+    @media (max-width: 900px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+    /* Lists */
+    ul.clean{margin:8px 0 0 0; padding:0; list-style:none}
+    ul.clean li{margin:8px 0; color:#d6dee9}
+
+    /* Project card */
+    .project{padding:16px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02)}
+    .project h4{margin:0 0 6px; color:#eaf2ff}
+    .project p{margin:0 0 10px; color:#afbed3}
+
+    /* Footer */
+    footer{padding:32px 0 42px; color:#93a3b8; border-top:1px solid rgba(255,255,255,.06); margin-top:22px}
+    .links a{color:#c9d1d9; text-decoration:none; margin-right:12px}
+    .links a:hover{color:white}
+
+    /* Reveal animation */
+    .reveal{opacity:0; transform:translateY(18px); transition: all .6s ease}
+    .reveal.show{opacity:1; transform:none}
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo"><i class="fa-solid fa-code"></i></div>
+        <span>Mohit Saxena • Java Developer</span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certs">Certifications</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="assets/Mohit_Saxena_Resume.pdf" download>Download Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="split">
+      <div>
+        <h1 class="title">Hi, I’m Mohit 👋<br/>Java Developer & Full‑Stack Learner</h1>
+        <p class="subtitle">I build clean, efficient web apps using <b>Java, JSP/Servlets, JDBC, and MySQL</b> with solid fundamentals in <b>OOP, DBMS, OS, and Networks</b>. Currently completing my <b>BCA (2022–2025)</b> and interning as a Java Developer.</p>
+        <div class="chips">
+          <span class="chip">Java</span>
+          <span class="chip">JSP / Servlets</span>
+          <span class="chip">JDBC</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">HTML • CSS • JS</span>
+          <span class="chip">Git</span>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <a class="btn" href="#projects"><i class="fa-solid fa-folder-open"></i> View Projects</a>
+          <a class="btn ghost" href="https://github.com/mohitsaxena1409" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/mohitsaxena2004" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        </div>
+      </div>
+      <div class="card reveal" style="text-align:center;">
+  <div style="display:flex; justify-content:center; align-items:center;">
+    <img src="img/randi.jpg" alt="Mohit Saxena"
+         style="width:210px; aspect-ratio:1/1; border-radius:16px; object-fit:cover; box-shadow:0 18px 40px var(--ring);" />
+  </div>
+  <div style="margin-top:12px; color:#9fb5ce">
+    Rajgarh, MP • +91 89627 98595 • mohitsaxena6528@gmail.com
+  </div>
+</div>
+
+
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container reveal">
+    <h3 class="section-title">ABOUT ME</h3>
+    <p class="section-sub">Skilled Java Developer with a solid understanding of object‑oriented programming principles. Proficient in building efficient, scalable, and high‑quality code with hands‑on experience in backend development, database management, and web technologies.</p>
+  </section>
+
+  <!-- Skills & Competencies -->
+  <section id="skills" class="container reveal">
+    <h3 class="section-title">SKILLS</h3>
+    <div class="grid grid-3">
+      <div class="card">
+        <h4 style="margin:0 0 10px;color:#dbeafe"><i class="fa-solid fa-laptop-code"></i> Technical</h4>
+        <ul class="clean">
+          <li><b>Languages:</b> Java, C, C++, SQL</li>
+          <li><b>Web:</b> HTML, CSS, JavaScript, Bootstrap, JSP, Servlets</li>
+          <li><b>Database:</b> MySQL</li>
+          <li><b>Tools:</b> Eclipse, VS Code, Git</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 10px;color:#dbeafe"><i class="fa-solid fa-diagram-project"></i> Core Concepts</h4>
+        <ul class="clean">
+          <li>Object‑Oriented Programming (OOP)</li>
+          <li>DBMS, Operating Systems, Computer Networks</li>
+          <li>Software Development Life Cycle (SDLC)</li>
+          <li>Agile, Collaboration, Debugging & Optimization</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 10px;color:#dbeafe"><i class="fa-solid fa-people-group"></i> Soft Skills</h4>
+        <ul class="clean">
+          <li>Team Player • Curious • Efficient • Committed</li>
+          <li>Clear communicator & quick learner</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="container reveal">
+    <h3 class="section-title">INTERNSHIP EXPERIENCE</h3>
+    <div class="card">
+      <h4 style="margin:0;color:#eaf2ff">Java Intern — Ypsilon IT Solutions Pvt. Ltd. <span style="color:#9fb5ce;font-weight:600">(Jan 2025 – Jul 2025)</span></h4>
+      <ul class="clean">
+        <li>Developed and maintained Java‑based web applications using <b>Eclipse</b>.</li>
+        <li>Designed and tested UI components with <b>HTML, CSS, JavaScript</b>.</li>
+        <li>Built and integrated backend features using <b>Java, JSP, Servlets</b>.</li>
+        <li>Performed <b>CRUD</b> operations and optimized queries in <b>MySQL</b>.</li>
+        <li>Collaborated on debugging and performance improvements.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="container reveal">
+    <h3 class="section-title">PROJECTS</h3>
+    <div class="grid grid-2">
+      <div class="project">
+        <h4>Quiz Web Application</h4>
+        <p>Java, JSP/Servlets, JDBC, MySQL, HTML, CSS</p>
+        <ul class="clean">
+          <li>User registration & login with domain‑based quizzes (Java, DSA, Python, Web).</li>
+          <li>Server‑side evaluation with a real‑time score dashboard (correct/incorrect/attempted).</li>
+          <li>MVC architecture: <b>Servlets</b> (Controller), <b>JSP</b> (View), <b>JavaBeans</b> (Model).</li>
+        </ul>
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn ghost" href="https://github.com/mohitsaxena1409" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+        </div>
+      </div>
+      <div class="project">
+        <h4>Portfolio Website (This Site)</h4>
+        <p>HTML, CSS, JavaScript</p>
+        <ul class="clean">
+          <li>Responsive, single‑page design with blue & black theme.</li>
+          <li>Smooth scrolling, reveal animations, and accessible markup.</li>
+          <li>Easy deployment to GitHub Pages / Netlify.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certs" class="container reveal">
+    <h3 class="section-title">CERTIFICATIONS</h3>
+    <div class="grid grid-2">
+      <div class="card">
+        <ul class="clean">
+          <li>Deloitte — Technology Job Simulation (Forage)</li>
+          <li>Accenture — Software Engineering Job Simulation (Forage)</li>
+          <li>GenAI Powered Data Analytics Job Simulation (Forage)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <ul class="clean">
+          <li>Java Full Stack — Universal Informatics</li>
+          <li>Great Learning — Java Certificate</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="container reveal">
+    <h3 class="section-title">EDUCATION</h3>
+    <div class="grid grid-2">
+      <div class="card">
+        <h4 style="margin:0;color:#eaf2ff">BCA — Prestige College, Rajgarh (MCNU, Bhopal)</h4>
+        <p class="section-sub" style="margin:6px 0 0">2022 – 2025</p>
+      </div>
+      <div class="card">
+        <ul class="clean">
+          <li>Class 12 (PCB), MP Board — 61% (2022)</li>
+          <li>Class 10, MP Board — 75% (2020)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container reveal">
+    <h3 class="section-title">CONTACT</h3>
+    <div class="grid grid-3">
+      <div class="card"><i class="fa-solid fa-envelope"></i> &nbsp; mohitsaxena6528@gmail.com</div>
+      <div class="card"><i class="fa-solid fa-phone"></i> &nbsp; +91 89627 98595</div>
+      <div class="card"><i class="fa-brands fa-linkedin"></i> &nbsp; <a style="color:#c9d1d9" href="https://www.linkedin.com/in/mohitsaxena2004" target="_blank">linkedin.com/in/mohitsaxena2004</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="year"></span> Mohit Saxena. All rights reserved.</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
